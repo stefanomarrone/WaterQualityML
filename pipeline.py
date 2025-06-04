@@ -49,14 +49,14 @@ for idx, col in enumerate(features):
     sns.histplot(data[col], kde=True, bins=30, color='skyblue')
     plt.title(col)
 plt.tight_layout()
-plt.savefig("fig1.pdf")
+plt.savefig("eda_analysis.pdf")
 
 plt.figure(figsize=(10, 8))
 corr_matrix = data[features + ['Potability']].corr()
 sns.heatmap(corr_matrix, annot=True, fmt='.2f', cmap='coolwarm', square=True)
 plt.title('Feature Correlation')
 plt.tight_layout()
-plt.show()
+plt.savefig("feature_correlation.pdf")
 
 # Data Preparation
 X = data[features]
@@ -133,7 +133,8 @@ plt.title('ROC Curves')
 plt.legend(loc='lower right')
 plt.grid(alpha=0.3)
 plt.tight_layout()
-plt.show()
+plt.savefig("roc_plot.pdf")
+
 
 # Results Summary
 results_df = pd.DataFrame(results).T.sort_values('ROC AUC', ascending=False)
@@ -157,7 +158,8 @@ plt.xlabel("Importance Score")
 plt.ylabel("Features")
 plt.grid(alpha=0.3)
 plt.tight_layout()
-plt.show()
+plt.savefig("feature_importance.pdf")
+
 
 # SHAP Analysis
 print("\n=== SHAP Analysis ===")
